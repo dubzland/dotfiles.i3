@@ -1,0 +1,58 @@
+#!/bin/bash
+
+set -e
+
+function print_border() {
+	printf "#%.0s" {1..80}
+	printf "\n"
+}
+
+function print_banner() {
+	local title="$1"
+	local padding=$((78 - ${#title}))
+	local leading_padding=$(($padding / 2))
+	local trailing_padding=$((($padding - $leading_padding)))
+	print_border
+	printf "#%*s%s%*s#\n" $leading_padding "" "$title" $trailing_padding ""
+	print_border
+}
+
+function print_header() {
+	local title="$1"
+	print_banner "BEGIN $title"
+}
+
+function print_footer() {
+	local title="$1"
+	print_banner "END $title"
+}
+
+function append_file() {
+	local file="$1"
+	local title="$(basename $1)"
+
+	print_header "$title"
+	cat "$file"
+	print_footer "$title"
+}
+
+CONFIG_DIR="$HOME/.config/i3"
+CONFIG_FILE="$CONFIG_DIR/config"
+
+[[ -f "$CONFIG_FILE" ]] && rm "$CONFIG_FILE"
+
+declare -a files=(
+	config.font
+	config.bindings
+	config.theme
+	config.settings
+	config.autostart
+)
+
+for idx in "${!files[@]}"; do
+	file="${files[$idx]}"
+	append_file "${CONFIG_DIR}/${files[$idx]}" >> $CONFIG_FILE
+	if [[ $idx -lt $((${#files[@]} - 1)) ]]; then
+		printf "\n" >> $CONFIG_FILE
+	fi
+done

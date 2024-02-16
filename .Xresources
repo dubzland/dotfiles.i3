@@ -1,0 +1,35 @@
+g.autohint: 0
+
+#include ".Xresources.d/xterm-color"
+
+XTerm*faceName: SauceCodePro Nerd Font Mono
+XTerm*iconHint: /home/josh/.local/share/pixmaps/terminal.xpm
+XTerm*selectToClipboard: true
+XTerm*termName: xterm-256color
+XTerm*metaSendsEscape: true
+XTerm*backarrowKey: false
+XTerm*ttyModes: erase ^?
+
+UXTerm*faceName: SauceCodePro Nerd Font Mono
+UXTerm*iconHint: /home/josh/.local/share/pixmaps/terminal.xpm
+UXTerm*selectToClipboard: true
+UXTerm*termName: xterm-256color
+UXTerm*metaSendsEscape: true
+UXTerm*backarrowKey: false
+UXTerm*ttyModes: erase ^?
+
+rofi.color-enabled: true
+rofi.separator-style: solid
+rofi.sidebar-mode: false
+rofi.bw: 2
+rofi.padding: 16
+rofi.font: SFNS Display 18
+rofi.opacity: 75
+rofi.color-normal: base03, base06, base03, base0F, base07
+rofi.color-active: base0D, base06, base0D, base0F, base06
+rofi.color-urgent: base0D, base06, base0D, base0F, base06
+rofi.color-window: base03, base06
+
+yeahconsole*toggleKey: Alt+F1
+
+#include ".Xresources.d/xterm-font-size"
