@@ -2,57 +2,52 @@
 
 set -e
 
-function print_border() {
-	printf "#%.0s" {1..80}
-	printf "\n"
-}
+I3_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/i3"
+I3_CONFIG_FILE="${I3_CONFIG_DIR}/config"
 
-function print_banner() {
+function banner() {
 	local title="$1"
 	local padding=$((78 - ${#title}))
 	local leading_padding=$(($padding / 2))
 	local trailing_padding=$((($padding - $leading_padding)))
-	print_border
-	printf "#%*s%s%*s#\n" $leading_padding "" "$title" $trailing_padding ""
-	print_border
+	local border
+
+	printf -v border "#%.0s" {1..80}
+	printf "%s\n#%*s%s%*s#\n%s\n" "$border" "$leading_padding" "" "$title" "$trailing_padding" "" "$border"
 }
 
-function print_header() {
-	local title="$1"
-	print_banner "BEGIN $title"
+function build_config() {
+	local title
+	local file
+
+	printf "##\n## Automatically generated on %(%Y-%m-%d %H:%M:%S)T\n##\n" -1
+
+	for file in ${I3_CONFIG_DIR}/conf.d/*.conf; do
+		title="$(basename "$file")"
+		banner "BEGIN $title"
+		cat "$file"
+		banner "END $title"
+	done
 }
 
-function print_footer() {
-	local title="$1"
-	print_banner "END $title"
+function needs_update() {
+	local file
+
+	[[ ! -f "$I3_CONFIG_FILE" ]] && return 0
+
+	for file in ${I3_CONFIG_DIR}/conf.d/*.conf; do
+		[[ "$file" -nt "${I3_CONFIG_FILE}" ]] && return 0
+	done
+
+	return 1
 }
 
-function append_file() {
-	local file="$1"
-	local title="$(basename $1)"
+if needs_update; then
+	[[ -f "$I3_CONFIG_FILE" ]] && rm "$I3_CONFIG_FILE"
 
-	print_header "$title"
-	cat "$file"
-	print_footer "$title"
-}
+	exec 3<> "$I3_CONFIG_FILE"
 
-CONFIG_DIR="$HOME/.config/i3"
-CONFIG_FILE="$CONFIG_DIR/config"
+	build_config >&3
 
-[[ -f "$CONFIG_FILE" ]] && rm "$CONFIG_FILE"
-
-declare -a files=(
-	config.font
-	config.bindings
-	config.theme
-	config.settings
-	config.autostart
-)
-
-for idx in "${!files[@]}"; do
-	file="${files[$idx]}"
-	append_file "${CONFIG_DIR}/${files[$idx]}" >> $CONFIG_FILE
-	if [[ $idx -lt $((${#files[@]} - 1)) ]]; then
-		printf "\n" >> $CONFIG_FILE
-	fi
-done
+	exec 3>&-
+fi

@@ -1,7 +1,5 @@
 g.autohint: 0
 
-#include ".Xresources.d/xterm-color"
-
 XTerm*faceName: SauceCodePro Nerd Font Mono
 XTerm*iconHint: /home/josh/.local/share/pixmaps/terminal.xpm
 XTerm*selectToClipboard: true
@@ -30,6 +28,8 @@ rofi.color-active: base0D, base06, base0D, base0F, base06
 rofi.color-urgent: base0D, base06, base0D, base0F, base06
 rofi.color-window: base03, base06
 
+i3wm.standardFont: SFNS Display
+
 yeahconsole*toggleKey: Alt+F1
 
-#include ".Xresources.d/xterm-font-size"
+#include ".Xresources.d/font-sizes"
