@@ -20,10 +20,10 @@ xterm), as well as configuration for `i3` itself and `i3status`.
 
 ```console
 # Set font sizes in .Xresources
-$ cp $HOME/.Xresources.d/font-sizes.example $HOME/.Xresources.d/font-sizes
+cp $HOME/.Xresources.d/font-sizes.example $HOME/.Xresources.d/font-sizes
 
 # Link autostarts
-$ ln -sf /usr/share/applications/barrier.desktop $HOME/.config/autostart/
-$ ln -sf /usr/share/applications/com.nextcloud.desktopclient.nextcloud.desktop $HOME/.config/autostart/
-$ ln -sf /usr/share/applications/xscreensaver.desktop $HOME/.config/autostart/
+ln -sf /usr/share/applications/barrier.desktop $HOME/.config/autostart/
+ln -sf /usr/share/applications/com.nextcloud.desktopclient.nextcloud.desktop $HOME/.config/autostart/
+ln -sf /usr/share/applications/xscreensaver.desktop $HOME/.config/autostart/
 ```
