@@ -18,7 +18,7 @@ xterm), as well as configuration for `i3` itself and `i3status`.
 
 ## Setup
 
-```console
+```bash
 # Set font sizes in .Xresources
 cp $HOME/.Xresources.d/font-sizes.example $HOME/.Xresources.d/font-sizes
 
