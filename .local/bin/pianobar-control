@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+source "$HOME/.local/lib/dubzland/pandora.bash"
+
+case "$1" in
+	quit|q)
+		if is_running; then
+			send_notification -t 1000 "Shutting down Pianobar"
+			printf "q" > "${PIANOBAR_SOCKET}"
+			set_is_playing 0
+			sleep 1
+		fi
+		;;
+	play|pause|p)
+		if is_running; then
+			printf "p" > "$PIANOBAR_SOCKET"
+			ip="$(get_is_playing)"
+			np="$(get_now_playing)"
+			if [[ $ip == 1 ]]; then
+				set_is_playing 0
+				send_notification -t 2500 "Song Paused" "$np"
+			else
+				set_is_playing 1
+				send_notification -t 2500 "Song Playing" "$np"
+			fi
+		else
+			send_notification -t 2500 "Starting Pianobar" "Logging in..."
+			# Check for the control socket
+			if [[ ! -p "${PIANOBAR_SOCKET}" ]]; then
+				mkfifo "${PIANOBAR_SOCKET}"
+			fi
+
+			# Check for the tmux session
+			if ! $(tmux has-session =t="pianobar" 2>/dev/null); then
+				tmux new-session -s "pianobar" -c "$HOME" -d pianobar
+			fi
+		fi
+		;;
+	current|c)
+		if is_running; then
+			ip="$(get_is_playing)"
+			np="$(get_now_playing)"
+			if [[ $ip == 1 ]]; then
+				send_notification -t 2500 "$np"
+			fi
+		fi
+		;;
+	switchstation|ss)
+		if is_running; then
+			new_station="$(cat "$stationlist" | rofi -dmenu -format 'i' -i -p "Select station")"
+			if [[ -n "$new_station" ]]; then
+				printf "s${new_station}\n" > "${PIANOBAR_SOCKET}"
+			fi
+		fi
+esac
