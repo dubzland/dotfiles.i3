@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+MODULE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+STOW_DIR="$(dirname "$MODULE_DIR")"
+
+pushd $STOW_DIR
+stow -t $HOME i3
+popd
