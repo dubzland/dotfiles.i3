@@ -12,13 +12,13 @@ fi
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # Load Base16 theme
-DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}"
+THEMES_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tinted-theming/base16-xresources/xresources"
 if [[ -n "${BASE16_THEME}" ]]; then
-	THEME_FILE="${DATA_DIR}/base16-xresources/xresources/base16-${BASE16_THEME}-256.Xresources"
+	THEME_FILE="${THEMES_DIR}/base16-${BASE16_THEME}-256.Xresources"
 	[[ -r "${THEME_FILE}" ]] && xrdb -merge "$THEME_FILE"
 fi
 
 # Generate the i3 configuration file
-i3-merge-config
+i3-merge-config >/dev/null
 
 exec i3

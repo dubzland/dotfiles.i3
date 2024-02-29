@@ -5,6 +5,14 @@ set -e
 I3_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/i3"
 I3_CONFIG_FILE="${I3_CONFIG_DIR}/config"
 
+function usage {
+	printf "Merge i3 configuration snippets into a single file.\n\n"
+	printf "Usage: $(basename $0) [-fh]\n"
+	printf "\t-f\tforce (useful when updating color scheme)\n"
+	printf "\t-h\tdisplay help\n"
+	exit 1
+}
+
 function banner() {
 	local title="$1"
 	local padding=$((78 - ${#title}))
@@ -41,8 +49,25 @@ function needs_update() {
 
 	return 1
 }
+FORCE=0
 
-if needs_update; then
+while getopts "fh" o; do
+	case "${o}" in
+		f)
+			FORCE=1
+			;;
+		h)
+			usage
+			;;
+		\?)
+			echo "ERROR: Invalid option -$OPTARG"
+			usage
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+if needs_update || [[ $FORCE -eq 1 ]]; then
 	[[ -f "$I3_CONFIG_FILE" ]] && rm "$I3_CONFIG_FILE"
 
 	exec 3<> "$I3_CONFIG_FILE"
