@@ -21,4 +21,4 @@ fi
 # Generate the i3 configuration file
 i3-merge-config >/dev/null
 
-exec i3
+exec i3 -d all > /home/jdubz/i3.log
