@@ -1,0 +1,12 @@
+[submodule ".config/tinted-theming/base16-dunst"]
+	path = .config/tinted-theming/base16-dunst
+	url = https://github.com/tinted-theming/base16-dunst
+[submodule ".config/tinted-theming/base16-i3"]
+	path = .config/tinted-theming/base16-i3
+	url = https://github.com/tinted-theming/base16-i3
+[submodule ".config/tinted-theming/base16-rofi"]
+	path = .config/tinted-theming/base16-rofi
+	url = https://github.com/tinted-theming/base16-rofi
+[submodule ".config/tinted-theming/base16-xresources"]
+	path = .config/tinted-theming/base16-xresources
+	url = https://github.com/tinted-theming/base16-xresources
