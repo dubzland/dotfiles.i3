@@ -20,8 +20,8 @@ order += "volume master"
 order += "tztime local"
 
 wireless wlan0 {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+        format_up = "󰖩: (%quality at %essid) %ip"
+        format_down = "󰖪: down"
 }
 
 battery 0 {
@@ -38,26 +38,26 @@ run_watch VPN {
 }
 
 ethernet vlan.192 {
-        format_up = ": %ip"
-        format_down = ": down"
+        format_up = "󰛳 %ip"
+        format_down = "󰛳 down"
 }
 
 tztime local {
-        format = ": %H:%M %m/%d"
+        format = " %H:%M %m/%d"
 }
 
 load {
-        format = ": %1min"
+        format = " %1min"
 }
 
 disk "/" {
-        format = ": %free"
+        format = "󰋊 %free"
 }
 
 volume master {
         # format = "♪: %volume"
-        format = ": %volume"
-        format_muted = ": muted (%volume)"
+        format = "󰖀 %volume"
+        format_muted = "󰖁 muted (%volume)"
         device = "pulse:alsa_output.pci-0000_00_1f.3.analog-stereo"
         # mixer = "Master"
         # mixer_idx = 1
@@ -65,5 +65,5 @@ volume master {
 
 cpu_temperature 0 {
         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input"
-        format = ": %degrees"
+        format = "󰈸 %degrees"
 }
