@@ -1,4 +1,6 @@
 configuration {
+  font: "DejaVu Sans 12";
+
   timeout {
       action: "kb-cancel";
       delay:  0;
