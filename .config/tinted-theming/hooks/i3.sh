@@ -4,6 +4,7 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 function die() {
 	printf "%s\n" "$*" >&2
+	exit 2
 }
 
 # base16-i3 colors directory

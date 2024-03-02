@@ -1,0 +1,21 @@
+command=~/.config/i3blocks/conf.d/$BLOCK_NAME
+separator_block_width=15
+# markup=none
+
+[load]
+interval=1
+
+[iface]
+IFACE=vlan.192
+interval=5
+
+[temp]
+chip=coretemp-isa-0000
+interval=2
+
+[volume]
+interval=1
+
+[time]
+command=echo " $(date '+%Y-%m-%d %H:%M:%S')"
+interval=1

@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+icon="󰈸"
+
+let warn=70
+let crit=90
+
+total="0"
+let cores=0
+
+regex="^temp[0-9]+_input: ([0-9\.]+).*$"
+
+while read line; do
+	if [[ "$line" =~ $regex ]]; then
+		((cores++))
+		total=$(echo $total+${BASH_REMATCH[1]} | bc)
+	fi
+done < <(sensors -u $chip 2>/dev/null)
+
+avg=$(echo "scale=1; $total / $cores" | bc)
+# echo "  $load"
+# echo "  $load"
+printf -v avg_int "%.0f" $avg
+
+printf "$icon $avg°C\n"
+printf "$icon $avg°C\n"
+
+if [[ $avg_int -gt $crit ]]; then
+	echo "#$BASE16_COLOR_08_HEX"
+elif [[ $avg_int -gt $warn ]]; then
+	echo "#$BASE16_COLOR_0A_HEX"
+else
+	echo "#$BASE16_COLOR_0B_HEX"
+fi

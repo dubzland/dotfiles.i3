@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+sink=$(pactl list short sinks | sed -e 's,^\([0-9][0-9]*\)[^0-9].*,\1,' | head -n 1)
+muted=$(pactl list sinks | grep '^[[:space:]]Mute:' | head -n $(( $sink + 1 )) | tail -n 1 | cut -d : -f 2 | tr -d '[:blank:]')
+volume=$(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $sink + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
+
+mute_icon="󰖁"
+low_icon="󰕿"
+med_icon="󰖀"
+high_icon="󰕾"
+
+if [[ "$muted" == "yes" ]]; then
+	echo "$mute_icon $volume%"
+	echo "$mute_icon $volume%"
+	echo "#$BASE16_COLOR_08_HEX"
+else
+	if [[ $volume -lt 33 ]]; then
+		echo "$low_icon $volume%"
+		echo "$low_icon $volume%"
+	elif [[ $volume -lt 66 ]]; then
+		echo "$med_icon $volume%"
+		echo "$med_icon $volume%"
+	else
+		echo "$high_icon $volume%"
+		echo "$high_icon $volume%"
+	fi
+fi

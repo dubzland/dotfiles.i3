@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+icon="󰛳"
+addr=$(ip addr show vlan.192 | grep -E "^\s+inet\s" | sed -E -n "s/^\s+inet\s([^\/ ]+)\/.*$/\1/p")
+
+state=$(cat /sys/class/net/$IFACE/operstate)
+
+if [[ "$state" == "down" ]]; then
+	echo "$icon down"
+	echo "$icon down"
+	echo "#$BASE16_COLOR_08_HEX"
+else
+	echo "$icon $addr"
+	echo "$icon $addr"
+	echo "#$BASE16_COLOR_0B_HEX"
+fi

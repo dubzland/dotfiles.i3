@@ -1,6 +1,6 @@
 g.autohint: 0
 
-XTerm*faceName: SauceCodePro Nerd Font Mono
+XTerm*faceName: RobotoMono Nerd Font
 XTerm*iconHint: /home/josh/.local/share/pixmaps/terminal.xpm
 XTerm*selectToClipboard: true
 XTerm*termName: xterm-256color
@@ -8,7 +8,7 @@ XTerm*metaSendsEscape: true
 XTerm*backarrowKey: false
 XTerm*ttyModes: erase ^?
 
-UXTerm*faceName: SauceCodePro Nerd Font Mono
+UXTerm*faceName: RobotoMono Nerd Font
 UXTerm*iconHint: /home/josh/.local/share/pixmaps/terminal.xpm
 UXTerm*selectToClipboard: true
 UXTerm*termName: xterm-256color
@@ -16,7 +16,7 @@ UXTerm*metaSendsEscape: true
 UXTerm*backarrowKey: false
 UXTerm*ttyModes: erase ^?
 
-i3wm.standardFont: SFNS Display
+i3wm.standardFont: DejaVu Sans
 
 yeahconsole*toggleKey: Alt+F1
 
