@@ -1,0 +1,5 @@
+#!/usr/local/bin bash
+
+BACKGROUNDS="${DUBZLAND_BACKGROUNDS:-$HOME/Documents/Backgrounds}"
+
+feh --no-fehbg --bg-fill "${BACKGROUNDS}/wallpaper" 
