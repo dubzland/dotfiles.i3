@@ -8,7 +8,8 @@ cpus="$(nproc)"
 
 printf "%s  %s\n" "$icon" "$load"
 printf "%s %s\n" "$icon" "$load"
-if [[ $load -gt $cpus ]]; then
+printf -v load_int "%.0f" "$load"
+if [[ $load_int -gt $cpus ]]; then
 	printf "#%s\n" "$BASE16_COLOR_08_HEX"
 	exit 33
 else

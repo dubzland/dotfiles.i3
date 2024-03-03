@@ -1,4 +1,4 @@
-#!/usr/local/bin bash
+#!/usr/bin/env bash
 
 BACKGROUNDS="${DUBZLAND_BACKGROUNDS:-$HOME/Documents/Backgrounds}"
 
