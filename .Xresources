@@ -1,4 +1,9 @@
-g.autohint: 0
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.rgba: rgb
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+/* g.autohint: 0 */
 
 XTerm*faceName: RobotoMono Nerd Font
 XTerm*iconHint: /home/josh/.local/share/pixmaps/terminal.xpm
@@ -16,7 +21,7 @@ UXTerm*metaSendsEscape: true
 UXTerm*backarrowKey: false
 UXTerm*ttyModes: erase ^?
 
-i3wm.standardFont: DejaVu Sans
+i3wm.standardFont: Arimo Nerd Font Propo
 
 yeahconsole*toggleKey: Alt+F1
 
