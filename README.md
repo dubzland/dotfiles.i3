@@ -13,17 +13,28 @@ xterm), as well as configuration for `i3` itself and `i3status`.
 - dunst (for notifications)
 - dex (for desktop autostart)
 - feh (for wallpaper)
-- parcellite (for clipboard history)
+- [greenclip][greenclip] (for clipboard history)
 - barrier (for KVM support)
 - nextcloud-client (duh)
 
 ## Setup
 
-```bash
-# Set font sizes in .Xresources
-cp $HOME/.Xresources.d/font-sizes.example $HOME/.Xresources.d/font-sizes
+Set the font sizes for use by X applications:
 
-# Link autostarts
+```bash
+cp $HOME/.Xresources.d/font-sizes.example $HOME/.Xresources.d/font-sizes
+```
+
+Link applications to auto-start:
+```bash
 ln -sf /usr/share/applications/barrier.desktop $HOME/.config/autostart/
 ln -sf /usr/share/applications/com.nextcloud.desktopclient.nextcloud.desktop $HOME/.config/autostart/
 ```
+
+By default, wallpaper and lock screen are set via 2 symlinks in `$HOME/Documents/Backgrounds`:
+```bash
+ln -sf <some image file> $HOME/Documents/Backgrounds/wallpaper
+ln -sf <some image file> $HOME/Documents/Backgrounds/lock
+```
+
+[greenclip]: https://github.com/erebe/greenclip
