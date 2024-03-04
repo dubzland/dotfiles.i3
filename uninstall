@@ -5,10 +5,10 @@ MODULE_NAME="i3"
 MODULE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 STOW_DIR="$(dirname "$MODULE_DIR")"
 
-pushd $MODULE_DIR
-git submodule update --init --recursive
+pushd $STOW_DIR
+stow -t $HOME -D "$MODULE_NAME"
 popd
 
-pushd $STOW_DIR
-stow -t $HOME -R "$MODULE_NAME"
+pushd $MODULE_DIR
+git submodule deinit --all
 popd
