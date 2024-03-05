@@ -45,5 +45,7 @@
 	ln -sf "${xresources_theme_file}" "${xresources_config_dir}/colors"
 
 	# Reload xresources
-	xrdb -merge "${xresources_config_dir}/colors"
+	if [[ -v DISPLAY ]]; then
+		xrdb -merge "${xresources_config_dir}/colors"
+	fi
 )
