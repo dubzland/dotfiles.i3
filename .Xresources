@@ -17,5 +17,5 @@ UXTerm*metaSendsEscape: true
 UXTerm*backarrowKey: false
 UXTerm*ttyModes: erase ^?
 
-#include ".Xresources.d/font-sizes"
+#include ".Xresources.d/fonts"
 #include ".Xresources.d/colors"
