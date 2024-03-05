@@ -1,18 +1,16 @@
+Xft.autohint: 0
 Xft.antialias: 1
 Xft.hinting: 1
 Xft.rgba: rgb
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
-/* g.autohint: 0 */
 
-XTerm*iconHint: /home/josh/.local/share/pixmaps/terminal.xpm
 XTerm*selectToClipboard: true
 XTerm*termName: xterm-256color
 XTerm*metaSendsEscape: true
 XTerm*backarrowKey: false
 XTerm*ttyModes: erase ^?
 
-UXTerm*iconHint: /home/josh/.local/share/pixmaps/terminal.xpm
 UXTerm*selectToClipboard: true
 UXTerm*termName: xterm-256color
 UXTerm*metaSendsEscape: true
