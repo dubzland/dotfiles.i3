@@ -5,7 +5,6 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 /* g.autohint: 0 */
 
-XTerm*faceName: RobotoMono Nerd Font
 XTerm*iconHint: /home/josh/.local/share/pixmaps/terminal.xpm
 XTerm*selectToClipboard: true
 XTerm*termName: xterm-256color
@@ -13,7 +12,6 @@ XTerm*metaSendsEscape: true
 XTerm*backarrowKey: false
 XTerm*ttyModes: erase ^?
 
-UXTerm*faceName: RobotoMono Nerd Font
 UXTerm*iconHint: /home/josh/.local/share/pixmaps/terminal.xpm
 UXTerm*selectToClipboard: true
 UXTerm*termName: xterm-256color
@@ -21,8 +19,5 @@ UXTerm*metaSendsEscape: true
 UXTerm*backarrowKey: false
 UXTerm*ttyModes: erase ^?
 
-i3wm.standardFont: Arimo Nerd Font Propo
-
-yeahconsole*toggleKey: Alt+F1
-
 #include ".Xresources.d/font-sizes"
+#include ".Xresources.d/colors"
