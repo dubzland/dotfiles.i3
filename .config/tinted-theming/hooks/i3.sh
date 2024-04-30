@@ -3,6 +3,10 @@
 # Hook script to update i3 colors when base16 theme switches.
 # Run in a subshell to avoid mangling the parent.
 (
+	sourced=1
+	if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+		sourced=0
+	fi
 
 	# Enable tracing if the DEBUG environment variable is set
 	if [[ ${DEBUG} =~ ^1|yes|true$ ]]; then
@@ -22,7 +26,7 @@
 		if [[ ${2-} =~ ^[0-9]+$ ]]; then
 			printf '%b\n' "$1"
 			if [[ $sourced -eq 0 ]]; then
-				exit $2
+				exit "$2"
 			fi
 			exit 0
 		fi
@@ -53,7 +57,10 @@
 	if command -v i3-merge-config > /dev/null; then
 		i3-merge-config -f
 		if pidof i3 >/dev/null; then
-			i3-msg reload >/dev/null
+			# i3 is running
+			if [[ -v I3SOCK && -S "$I3SOCK" ]]; then
+				i3-msg reload >/dev/null
+			fi
 		fi
 	fi
 )
