@@ -31,7 +31,7 @@ case "$1" in
 			fi
 
 			# Check for the tmux session
-			if ! $(tmux has-session =t="pianobar" 2>/dev/null); then
+			if ! tmux has-session =t="pianobar" 2>/dev/null; then
 				tmux new-session -s "pianobar" -c "$HOME" -d pianobar
 			fi
 		fi
@@ -52,4 +52,15 @@ case "$1" in
 				printf "s${new_station}\n" > "${PIANOBAR_SOCKET}"
 			fi
 		fi
+		;;
+	thumbsup|+)
+		if is_running; then
+			printf "+" > "$PIANOBAR_SOCKET"
+		fi
+		;;
+	thumbsdown|-)
+		if is_running; then
+			printf "-" > "$PIANOBAR_SOCKET"
+		fi
+		;;
 esac

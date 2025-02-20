@@ -26,10 +26,14 @@ usergetstations)
 	send_notification "Station count" "$stationCount"
 	if [[ $stationCount -gt 0 ]]; then
 		clear_stationlist
-		for stnum in $(seq 0 $(($stationCount-1))); do
+		for stnum in $(seq 0 $((stationCount-1))); do
 			add_station "$stnum" "$(eval "echo \$station$stnum")"
 		done
 	fi
+	;;
+songlove)
+	np="$(get_now_playing)"
+	send_notification "Song Liked" "$np"
 	;;
  *)
 	log "Unhandled notification from Pianobar: $1"
